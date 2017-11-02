@@ -6,12 +6,13 @@ public class Player : MonoBehaviour {
 
     public float mSpeed;
     public float mRotateSpeed;
+    public float mMissileForce;
     public GameObject missile;
   
 	void Start () {
         mSpeed = 8f;
         mRotateSpeed = 3f;
-
+        mMissileForce = 1f;
 	}
 
     void Move()
@@ -24,7 +25,11 @@ public class Player : MonoBehaviour {
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            GameObject missileClone = Instantiate(missile, transform.localPosition, transform.rotation);
+            Vector3 newPosition = (transform.localPosition + (transform.up * 3));
+            newPosition.z = 0;
+            GameObject missileClone = Instantiate(missile, newPosition, transform.rotation);
+          
+
 
         }
     }
